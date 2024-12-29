@@ -1,0 +1,32 @@
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- Beans are the objects  managed by Spring Framework-->
+    <bean id="programmer" class="com.petroudis.Programmer" autowire="byName">
+        <!-- first var is first location in constructor-->
+<!--        <constructor-arg value="21"/>-->
+        <!-- second var is first location in constructor-->
+<!--        <constructor-arg ref="laptop1"/>-->
+        <property name="age" value="21"/>
+        <property name="computer">
+            <bean id="com1" class="com.petroudis.Laptop" primary="true">
+            </bean>
+        </property>
+    </bean>
+<!-- we can create another bean for the same class
+<bean id="programmer2" class="com.petroudis.Programmer">
+</bean>
+-->
+
+    <!-- we can initialize a primitive type variable as
+    <property name="age" value="21"></property>
+    -->
+    <!-- scope prototype
+    <bean id="programmer2" class="com.petroudis.Programmer" scope = "prototype"> </bean>
+    -->
+<!--    <bean id="computer1" class="com.petroudis.Laptop" primary="true"/>-->
+    <bean id="computer" class="com.petroudis.Desktop" lazy-init="true"/>
+</beans>
